@@ -71,3 +71,14 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 
 ## Expected results
 * Should display "Continue" when clicked the system should reset to initial state ready for the next user/employee
+
+# Module 5: User control- Skip timeout button (Timout test)
+
+## Test steps
+1. Build and run CiCo.
+2. Enter 00000000 into the field and click Update.
+3. System starts timeout countdown let the timeout run to verify it still works.
+
+
+## Expected results
+* Should display "Continue" when left alone the timeout operates as it should resetting to the initial state for the next user/employee.
