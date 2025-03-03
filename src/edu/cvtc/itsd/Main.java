@@ -289,6 +289,13 @@ public class Main {
     labelState.setForeground(Color.magenta);
     panelStatus.add(labelState);
 
+    // Add a continue button to let users bypass the timeout(*Kh)
+    JButton continueButton = new JButton("Continue");
+    continueButton.addActionListener(handler);
+    continueButton.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+    continueButton.setForeground(Color.blue);
+    panelStatus.add(continueButton);
+
     panelStatus.add(Box.createVerticalGlue());
 
     // Error panel ////////////////////////////////////////////////////////////
