@@ -201,11 +201,25 @@ public class Main {
 
   // Return to the main panel /////////////////////////////////////////////////
   private static void doneProcessing() {
-    timeout.cancel();
-    timeout = null;
+    if (timeout != null) {
+      timeout.cancel();
+      timeout = null;
+    }
+    // Remove document filter temporarily
+    AbstractDocument doc = (AbstractDocument)fieldNumber.getDocument();
+    DocumentFilter oldFilter = doc.getDocumentFilter();
+    doc.setDocumentFilter(null);
+
     fieldNumber.setText("");
     ((CardLayout)deck.getLayout()).show(deck, CARD_MAIN);
     fieldNumber.grabFocus();
+    
+    // Re-add document filter after a small delay
+    Timer delayFilter = new Timer(100, e -> {
+      doc.setDocumentFilter(oldFilter);
+    });
+    delayFilter.setRepeats(false);
+    delayFilter.start();
   }
 
   // Display name and new status //////////////////////////////////////////////
